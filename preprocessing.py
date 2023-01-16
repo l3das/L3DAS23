@@ -96,16 +96,16 @@ def preprocessing_task1(args):
             target_path = '/'.join((sound_path.split('/')[:-2] + ['labels'] + [sound_path.split('/')[-1]]))  #change data with labels
             target_path = target_path[:-6] + target_path[-4:]  #remove mic ID
             #target_path = sound_path.replace('data', 'labels').replace('_A', '')  #old wrong line
-            samples, sr = librosa.load(sound_path, sr_task1, mono=False)
+            samples, sr = librosa.load(sound_path, sr=sr_task1, mono=False)
             # image = 
             #samples = pad(samples)
             if args.num_mics == 2:  # if both ambisonics mics are wanted
                 #stack the additional 4 channels to get a (8, samples) shap
                 B_sound_path = sound_path[:-5] + 'B' +  sound_path[-4:]  #change A with B
-                samples_B, sr = librosa.load(B_sound_path, sr_task1, mono=False)
+                samples_B, sr = librosa.load(B_sound_path, sr=sr_task1, mono=False)
                 samples = np.concatenate((samples,samples_B), axis=-2)
 
-            samples_target, sr = librosa.load(target_path, sr_task1, mono=False)
+            samples_target, sr = librosa.load(target_path, sr=sr_task1, mono=False)
             samples_target = samples_target.reshape((1, samples_target.shape[0]))
 
             #append to final arrays
@@ -236,12 +236,12 @@ def preprocessing_task2(args):
                 target_path = os.path.join(data_path, target_name)
                 target_path = '/'.join((target_path.split('/')[:-2] + ['labels'] + [target_path.split('/')[-1]]))  #change data with labels
                 #target_path = target_path.replace('data', 'labels')  #old
-                samples, sr = librosa.load(sound_path, sr_task2, mono=False)
+                samples, sr = librosa.load(sound_path, sr=sr_task2, mono=False)
                 if args.num_mics == 2:  # if both ambisonics mics are wanted
                     #stack the additional 4 channels to get a (8, samples) shape
                     B_sound_path = sound_path[:-5] + 'B' +  sound_path[-4:]  #change A with B
                     #B_sound_path = sound_path.replace('A', 'B')  old
-                    samples_B, sr = librosa.load(B_sound_path, sr_task2, mono=False)
+                    samples_B, sr = librosa.load(B_sound_path, sr=sr_task2, mono=False)
                     samples = np.concatenate((samples,samples_B), axis=-2)
 
                 #compute stft

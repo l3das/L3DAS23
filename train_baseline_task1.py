@@ -20,12 +20,12 @@ from custom_dataset import CustomAudioVisualDataset
 
 import wandb
 
-start_epoch = 200
+start_epoch = 0
 
 WANDB = True
 
 '''
-Train our baseline model for the Task1 of the L3DAS22 challenge.
+Train our baseline model for the Task1 of the L3DAS23 challenge.
 This script saves the model checkpoint, as well as a dict containing
 the results (loss and history). To evaluate the performance of the trained model
 according to the challenge metrics, please use evaluate_baseline_task1.py.

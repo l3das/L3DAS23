@@ -19,7 +19,7 @@ from utility_functions import load_model, save_model
 
 '''
 Load pretrained model and compute the metrics for Task 1
-of the L3DAS22 challenge. The metric is: (STOI+(1-WER))/2
+of the L3DAS23 challenge. The metric is: (STOI+(1-WER))/2
 Command line arguments define the model parameters, the dataset to use and
 where to save the obtained results.
 '''

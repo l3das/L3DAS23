@@ -18,7 +18,7 @@ from utility_functions import load_model, save_model
 from custom_dataset import CustomAudioVisualDataset
 
 '''
-Train our baseline model for the Task2 of the L3DAS22 challenge.
+Train our baseline model for the Task2 of the L3DAS23 challenge.
 This script saves the best model checkpoint, as well as a dict containing
 the results (loss and history). To evaluate the performance of the trained model
 according to the challenge metrics, please use evaluate_baseline_task2.py.
@@ -307,10 +307,9 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     #saving/loading parameters
-    mnt_path = '/mnt/media/christian/Datasets/'
-    parser.add_argument('--results_path', type=str, default=mnt_path+'RESULTS/Task2',
+    parser.add_argument('--results_path', type=str, default='RESULTS/Task2',
                         help='Folder to write results dicts into')
-    parser.add_argument('--checkpoint_dir', type=str, default=mnt_path+'RESULTS/Task2',
+    parser.add_argument('--checkpoint_dir', type=str, default='RESULTS/Task2',
                         help='Folder to write checkpoints into')
     parser.add_argument('--load_model', type=str, default=None,
                         help='Reload a previously trained model (whole task model)')
@@ -321,12 +320,12 @@ if __name__ == '__main__':
     parser.add_argument('--path_csv_images_test', type=str, default='DATASETS/Task2/L3DAS23_Task2_dev/audio_image.csv',
                         help="Path to the CSV file for the couples (name_audio, name_photo) in the test set")
     #dataset parameters
-    parser.add_argument('--training_predictors_path', type=str, default=mnt_path+'DATASETS/processed/task2_predictors_train.pkl')
-    parser.add_argument('--training_target_path', type=str, default=mnt_path+'DATASETS/processed/task2_target_train.pkl')
-    parser.add_argument('--validation_predictors_path', type=str, default=mnt_path+'DATASETS/processed/task2_predictors_validation.pkl')
-    parser.add_argument('--validation_target_path', type=str, default=mnt_path+'DATASETS/processed/task2_target_validation.pkl')
-    parser.add_argument('--test_predictors_path', type=str, default=mnt_path+'DATASETS/processed/task2_predictors_test.pkl')
-    parser.add_argument('--test_target_path', type=str, default=mnt_path+'DATASETS/processed/task2_target_test.pkl')
+    parser.add_argument('--training_predictors_path', type=str, default='DATASETS/processed/task2_predictors_train.pkl')
+    parser.add_argument('--training_target_path', type=str, default='DATASETS/processed/task2_target_train.pkl')
+    parser.add_argument('--validation_predictors_path', type=str, default='DATASETS/processed/task2_predictors_validation.pkl')
+    parser.add_argument('--validation_target_path', type=str, default='DATASETS/processed/task2_target_validation.pkl')
+    parser.add_argument('--test_predictors_path', type=str, default='DATASETS/processed/task2_predictors_test.pkl')
+    parser.add_argument('--test_target_path', type=str, default='DATASETS/processed/task2_target_test.pkl')
     #training parameters
     parser.add_argument('--gpu_id', type=int, default=0)
     parser.add_argument('--use_cuda', type=str, default='True')

@@ -7,6 +7,8 @@ from tqdm import tqdm
 '''
 Download our pre-trained baseline models for task 1 and task2, separately.
 Command line arguments define which task to download and where to put the checkpoint file.
+
+TO BE UPDATED
 '''
 
 
@@ -47,9 +49,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--output_path', type=str)
     parser.add_argument('--task', type=int)
+    parser.add_argument('--track', type=str, default='audio-only')
     args = parser.parse_args()
 
-    if args.task == 1:
+    if args.task == 1 and args.track == 'audio-only':
         file_id = '1n44qAxt_aEuOuhElAkDb5YDM7LmtsXgI'
     elif args.task == 2:
         file_id = '1gno2EONz2q9aPENkztIxcTkRdrXw3CkJ'

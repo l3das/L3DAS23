@@ -115,8 +115,8 @@ def validate_task2_submission(submission_folder, test_folder):
             line = s.iloc[0]
             frame = line[0]
             class_name = line[1]
-            x = line[2]
-            y = line[3]
+            rho = line[2]
+            theta = line[3]
             z = line[4]
             try:
                 int(frame)
@@ -128,11 +128,11 @@ def validate_task2_submission(submission_folder, test_folder):
             except:
                 raise AssertionError ('The element 1 of a row should be a string')
             try:
-                str(x)
+                str(rho)
             except:
                 raise AssertionError ('The element 2 of a row should be a float')
             try:
-                str(y)
+                str(theta)
             except:
                 raise AssertionError ('The element 3 of a row should be a float')
             try:

@@ -13,12 +13,12 @@ from torchvision import transforms
 
 from metrics import location_sensitive_detection
 from models.SELDNet import Seldnet_augmented, Seldnet_vanilla, audiovisual_Seldnet_augmented
-from utility_functions import gen_submission_list_task2, load_model, save_model, audio_image_csv_to_dict, load_image
+from utility_functions import gen_submission_list_task2, load_model, save_model
 from custom_dataset import CustomAudioVisualDataset
 
 '''
 Load pretrained model and compute the metrics for Task 2
-of the L3DAS22 challenge. The metric is F score computed with the
+of the L3DAS23 challenge. The metric is F score computed with the
 location sensitive detection: https://ieeexplore.ieee.org/document/8937220.
 Command line arguments define the model parameters, the dataset to use and
 where to save the obtained results.
@@ -159,16 +159,15 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     #i/o parameters
-    mnt_path = "/mnt/media/christian/Datasets/"
-    parser.add_argument('--model_path', type=str, default=mnt_path+'RESULTS/Task2/checkpoint')
-    parser.add_argument('--results_path', type=str, default=mnt_path+'RESULTS/Task2/metrics')
+    parser.add_argument('--model_path', type=str, default='RESULTS/Task2/checkpoint')
+    parser.add_argument('--results_path', type=str, default='RESULTS/Task2/metrics')
     parser.add_argument('--path_images', type=str, default=None,
                         help="Path to the folder containing all images of Task2. None when using the audio only version")
     parser.add_argument('--path_csv_images', type=str, default='DATASETS/Task2/L3DAS23_Task2_dev/audio_image.csv',
                         help="Path to the CSV file for the couples (name_audio, name_photo)")
     #dataset parameters
-    parser.add_argument('--predictors_path', type=str, default=mnt_path+'DATASETS/processed/task2_predictors_test.pkl')
-    parser.add_argument('--target_path', type=str, default=mnt_path+'DATASETS/processed/task2_target_test.pkl')
+    parser.add_argument('--predictors_path', type=str, default='DATASETS/processed/task2_predictors_test.pkl')
+    parser.add_argument('--target_path', type=str, default='DATASETS/processed/task2_target_test.pkl')
     parser.add_argument('--sr', type=int, default=32000)
     #eval parameters
     parser.add_argument('--max_loc_value', type=float, default=2,

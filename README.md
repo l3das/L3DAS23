@@ -6,7 +6,7 @@ Moreover, we extensively commented our code for easy customization.
 For further information please refer to the challenge [website](https://www.l3das.com/icassp2023/index.html), where the specifics of both the dataset and the challenge are covered in detail.
 
 ## Installation
-Our code is based on Python 3.7.
+Our code is based on Python 3.7. A MATLAB version of the baselines will also be available.
 
 To install all required dependencies run:
 ```bash
@@ -25,7 +25,7 @@ python download_dataset.py --output_path ./DATASETS --unzip True
 
 This script may take long, especially the unzipping stage.
 
-Alternatively, it is possible to manually download the dataset from [Kaggle](https://www.kaggle.com/l3dasteam/l3das22).
+Alternatively, it is possible to manually download [Task 1](https://www.kaggle.com/datasets/l3dasteam/l3das23-task1) and [Task 2](https://www.kaggle.com/datasets/l3dasteam/l3das23-challenge) from Kaggle.
 
 The *train360* section of task 1 is split in 2 downloadable files. If you manually download the dataset, you should manually merge the content of the 2 folders. You can use the function download_dataset.merge_train360().
 Example:
@@ -76,7 +76,7 @@ Alternatively, it is possible to download our pre-trained models with these comm
 python download_baseline_models.py --task 1 --output_path RESULTS/Task1/pretrained
 python download_baseline_models.py --task 2 --output_path RESULTS/Task2/pretrained
 ```
-These models are also available for manual download [here]().
+These models are also available for manual download [here](https://drive.google.com/drive/folders/1vtWhjLfKHq2CDkln8lwr67IoX0P_Xz51?usp=share_link).
 
 ## Evaluaton metrics
 Our evaluation metrics for both tasks are included in the **metrics.py** script.
@@ -103,7 +103,7 @@ In case you want to evaluate our pre-trained models, please add
 to the above commands.
 
 ## Submission shape validation
-The script **validate_submission.py** can be used to assess the validity of the submission files shape. Instructions about how to format the submission can be found in the L3das [website](https://www.l3das.com/icassp2022/submission.html)
+The script **validate_submission.py** can be used to assess the validity of the submission files shape. Instructions about how to format the submission can be found in the L3DAS [website](https://www.l3das.com/icassp2023/submission.html)
 Use these commands to validate your submissions:
 ```bash
 python validate_submission.py --task 1 --submission_path path/to/task1_submission_folder --test_path path/to/task1_test_dataset_folder

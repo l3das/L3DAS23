@@ -11,7 +11,7 @@ import torch
 
 from scipy.signal import stft
 
-import accimage
+# import accimage
 from PIL import Image
 
 '''
@@ -191,14 +191,14 @@ def load_image(path, resize=None):
             img = Image.open(f)
             return img.convert("RGB")
 
-    # img =  accimage.Image(path)
-    error_loading = False
-    try:
-        img =  accimage.Image(path)   # To use it, images should be first converted from .png to .jpg
-    except OSError:
-        error_loading = True
+    # error_loading = False
+    # try:
+    #     img =  accimage.Image(path)   # To use it, images should be first converted from .png to .jpg
+    # except OSError:
+    # error_loading = True
         # May depend on a decoding problem, fall back to PIL.Image
-        img = pil_loader(path)
+    
+    img = pil_loader(path)
     
     if resize is not None:
         img.resize(size=(resize, resize))
