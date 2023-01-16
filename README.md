@@ -6,7 +6,7 @@ Moreover, we extensively commented our code for easy customization.
 For further information please refer to the challenge [website](https://www.l3das.com/icassp2023/index.html), where the specifics of both the dataset and the challenge are covered in detail.
 
 ## Installation
-Our code is based on Python 3.7. A MATLAB version of the baselines will also be available.
+Our code is based on Python 3.8.10. A MATLAB version of the baselines will also be available.
 
 To install all required dependencies run:
 ```bash

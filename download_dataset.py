@@ -139,7 +139,6 @@ if __name__ == '__main__':
     f = os.listdir(args.output_path)
     f.remove("Task1")
     f.remove("Task2")
-    f.remove 
     f = [os.path.join(args.output_path, i) for i in f]
     for i in f:
         shutil.rmtree(i)
