@@ -1,4 +1,4 @@
-# L3DAS23 challenge supporting API
+# L3DAS23 Challenge supporting API
 This repository supports the L3DAS23 IEEE ICASSP Grand Challenge and it is aimed at downloading the dataset, pre-processing the sound files and the metadata, training and evaluating the baseline models and validating the final results.
 We provide easy-to-use instruction to produce the results of the basiline models.
 Moreover, we extensively commented our code for easy customization.
