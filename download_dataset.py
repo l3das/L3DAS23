@@ -59,32 +59,32 @@ def merge_train360(part1_path, part2_path):
     print ("Merging task1 train360 sound data")
     with tqdm(total=len(data1_c)) as pbar:
         for source in data1_c:
-            target = source.replace("L3DAS23_Task1_train_360_1", "L3DAS23_Task1_train_360_2")
+            target = source.replace("L3DAS23_Task1_train_360_part1", "L3DAS23_Task1_train_360_part2")
             os.rename(source, target)
             pbar.update(1)
 
     print ("Merging task1 train360 labels data")
     with tqdm(total=len(data1_c)) as pbar:
         for source in labels1_c:
-            target = source.replace("L3DAS23_Task1_train_360_1", "L3DAS23_Task1_train_360_2")
+            target = source.replace("L3DAS23_Task1_train_360_part1", "L3DAS23_Task1_train_360_part2")
             os.rename(source, target)
             pbar.update(1)
 
-    merged_name = part2_path.replace("_2", "")
+    merged_name = part2_path.replace("_part2", "")
     if not os.path.exists(merged_name):
         os.makedirs(merged_name)
 
+    # Just moving info.csv and audio_image.csv
     info_1_path = os.path.join(part1_path, "info.csv")
     info_2_path = os.path.join(part2_path, "info.csv")
-    out_info_path = os.path.join(merged_name, "info.csv")
+    os.rename(info_1_path, info_2_path)
+    audioimage_1_path = os.path.join(part1_path, "audio_image.csv")
+    audioimage_2_path = os.path.join(part2_path, "audio_image.csv")
+    os.rename(audioimage_1_path, audioimage_2_path)
 
-    print ("Merging task1 train360 info.csv")
-    merge_csv(info_1_path, info_2_path, info_2_path)
-
-    #os.rename(part2_path, merged_name)
     shutil.rmtree(part1_path)
 
-    #print ("Merged!")
+    print("Train360 merged!")
 
 
 if __name__ == '__main__':
