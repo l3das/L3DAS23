@@ -55,12 +55,12 @@ For **Task1** the function returns 2 numpy arrays contatining:
 * Output monoaural audio waveforms (clean speech) - Shape [n_data, 1, n_samples].
 
 For **Task2** the function returns 2 numpy arrays contatining:
-* Input multichannel audio spectra (3d acoustic scenarios): Shape: [n_data, n_channels, n_fft_bins, n_time_frames].
+* Input multichannel audio spectra (3D acoustic scenarios): Shape: [n_data, n_channels, n_fft_bins, n_time_frames].
 * Output seld matrices containing the class ids of all sounds present in each 100-milliseconds frame alongside with their location coordinates - Shape: [n_data, n_frames, ((n_classes * n_class_overlaps) + (n_classes * n_class_overlaps * n_coordinates))], where n_class_overlaps is the maximum amount of possible simultaneous sounds of the same class (3) and n_coordinates refers to the spatial dimensions (3).
 
 
 ## Baseline models
-We provide baseline models for both tasks, implemented in PyTorch. For task 1 we use a Beamforming U-Net and for task 2 an augmented variant of the SELDNet architecture. Both models are based on the single-microphone dataset configuration. Moreover, for task 1 we used only Train100 as training set. We also provide a version of both models adapted for track audiovisual. 
+We provide baseline models for both tasks, implemented in PyTorch. For task 1 we use a Beamforming U-Net and for task 2 an augmented variant of the SELDNet architecture. Both models are based on the single-microphone dataset configuration. Moreover, for task 1 we used only Train100 as training set. We also provide a version of both models adapted for the audio-visual track. 
 
 To train our baseline models with the default parameters run:
 ```bash
@@ -69,14 +69,15 @@ python train_baseline_task2.py
 ```
 These models will produce the baseline results mentioned in the paper.
 
+For the audio-visual track, you should run:
+```bash
+python train_baseline_task1.py --path_images path/to/images_folder --path_csv_images_train path/to/train_audio_image_csv --path_csv_images_test path/to/test_audio_image_csv
+python train_baseline_task2.py --path_images path/to/images_folder --path_csv_images_train path/to/train_audio_image_csv --path_csv_images_test path/to/test_audio_image_csv
+```
+
 GPU is strongly recommended to avoid very long training times.
 
-Alternatively, it is possible to download our pre-trained models with these commands:
-```bash
-python download_baseline_models.py --task 1 --output_path RESULTS/Task1/pretrained
-python download_baseline_models.py --task 2 --output_path RESULTS/Task2/pretrained
-```
-These models are also available for manual download [here](https://drive.google.com/drive/folders/1vtWhjLfKHq2CDkln8lwr67IoX0P_Xz51?usp=share_link).
+Alternatively, it is possible to download our pre-trained models available for manual download [here](https://drive.google.com/drive/folders/1vtWhjLfKHq2CDkln8lwr67IoX0P_Xz51?usp=share_link).
 
 ## Evaluaton metrics
 Our evaluation metrics for both tasks are included in the **metrics.py** script.

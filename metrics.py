@@ -50,20 +50,20 @@ def wer(clean_speech, denoised_speech):
     def _transcription(clean_speech, denoised_speech):
 
         # transcribe clean audio
-        input_values = wer_tokenizer(clean_speech, return_tensors="pt").input_values;
-        logits = wer_model(input_values).logits;
-        predicted_ids = torch.argmax(logits, dim=-1);
-        transcript_clean = wer_tokenizer.batch_decode(predicted_ids)[0];
+        input_values = wer_tokenizer(clean_speech, return_tensors="pt").input_values
+        logits = wer_model(input_values).logits
+        predicted_ids = torch.argmax(logits, dim=-1)
+        transcript_clean = wer_tokenizer.batch_decode(predicted_ids)[0]
 
         # transcribe
-        input_values = wer_tokenizer(denoised_speech, return_tensors="pt").input_values;
-        logits = wer_model(input_values).logits;
-        predicted_ids = torch.argmax(logits, dim=-1);
-        transcript_estimate = wer_tokenizer.batch_decode(predicted_ids)[0];
+        input_values = wer_tokenizer(denoised_speech, return_tensors="pt").input_values
+        logits = wer_model(input_values).logits
+        predicted_ids = torch.argmax(logits, dim=-1)
+        transcript_estimate = wer_tokenizer.batch_decode(predicted_ids)[0]
 
         return [transcript_clean, transcript_estimate]
 
-    transcript = _transcription(clean_speech, denoised_speech);
+    transcript = _transcription(clean_speech, denoised_speech)
     try:   #if no words are predicted
         wer_val = jiwer.wer(transcript[0], transcript[1])
     except ValueError:
@@ -169,14 +169,14 @@ def location_sensitive_detection(pred, true, n_frames=100, spatial_threshold=2.,
                 #count if in each true event there is or not a matching predicted event
                 true_class = t[i_t][1]          #true class
                 true_coord = t[i_t][-3:]        #true coordinates
-                x_true = true_coord[0] * math.sin(math.radians(true_coord[1]))
-                y_true = true_coord[0] * math.cos(math.radians(true_coord[1]))
+                x_true = - true_coord[0] * math.sin(math.radians(true_coord[1]))
+                y_true =   true_coord[0] * math.cos(math.radians(true_coord[1]))
                 curr_true_coord = np.array([x_true, y_true, true_coord[2]])
                 for i_p in range(len(p)):       #compare each true event with all predicted events
                     pred_class = p[i_p][1]      #predicted class
                     pred_coord = p[i_p][-3:]    #predicted coordinates
-                    x_pred = pred_coord[0] * math.sin(math.radians(pred_coord[1]))
-                    y_pred = pred_coord[0] * math.cos(math.radians(pred_coord[1]))
+                    x_pred = - pred_coord[0] * math.sin(math.radians(pred_coord[1]))
+                    y_pred =   pred_coord[0] * math.cos(math.radians(pred_coord[1]))
                     curr_pred_coord = np.array([x_pred, y_pred, pred_coord[2]])
                     
                     spat_error = np.linalg.norm(curr_true_coord-curr_pred_coord)  #cartesian distance between spatial coords
