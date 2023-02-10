@@ -174,7 +174,7 @@ if __name__ == '__main__':
                          help='max value of target loc labels (to rescale model\'s output since the models has tanh in the output loc layer)')
     parser.add_argument('--num_frames', type=int, default=300,
                         help='total number of time frames in the predicted seld matrices. (300 for 30-seconds sounds with 100msecs frames)')
-    parser.add_argument('--spatial_threshold', type=float, default=.5,
+    parser.add_argument('--spatial_threshold', type=float, default=1.75,
                         help='max cartesian distance for considering a true positive')
     #model parameters
     #the following parameters produce a prediction for each 100-msecs frame

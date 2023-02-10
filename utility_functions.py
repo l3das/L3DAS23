@@ -91,7 +91,7 @@ def spectrum_fast(x, nperseg=512, noverlap=128, window='hamming', cut_dc=True,
     return output
 
 
-def gen_submission_list_task2(sed, doa, max_loc_value=2.,num_frames=600, num_classes=14, max_overlaps=3):
+def gen_submission_list_task2(sed, doa, max_loc_value=360.,num_frames=600, num_classes=14, max_overlaps=3):
     '''
     Process sed and doa output matrices (model's output) and generate a list of active sounds
     and their location for every frame. The list has the correct format for the Challenge results
@@ -118,7 +118,7 @@ def gen_submission_list_task2(sed, doa, max_loc_value=2.,num_frames=600, num_cla
 
 
 def csv_to_matrix_task2(path, class_dict, dur=60, step=0.1,
-                        max_loc_value=2., no_overlaps=False):
+                        max_loc_value=360., no_overlaps=False):
     '''
     Read label csv file fro task 2 and
     Output a matrix containing 100msecs frames, each filled with
